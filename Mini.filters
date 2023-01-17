@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="main">
+      <UniqueIdentifier>{a6f56822-37de-46ce-8914-4e29be487ba4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main\main.cc">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="includes\imgui\imgui_draw.cpp" />
+    <ClCompile Include="includes\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="includes\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="includes\imgui\imgui_tables.cpp" />
+    <ClCompile Include="includes\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="includes\imgui\imgui.cpp" />
+    <ClCompile Include="includes\imgui\imgui_demo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main\stdafx.hpp" />
+    <ClInclude Include="directx\gui\gui.hpp" />
+    <ClInclude Include="directx\hook\hook.hpp" />
+    <ClInclude Include="includes\hooklib\HookLib.h" />
+    <ClInclude Include="directx\hook\handler.hpp" />
+    <ClInclude Include="includes\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="includes\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="includes\imgui\imgui_internal.h" />
+    <ClInclude Include="includes\imgui\imstb_rectpack.h" />
+    <ClInclude Include="includes\imgui\imstb_textedit.h" />
+    <ClInclude Include="includes\imgui\imstb_truetype.h" />
+    <ClInclude Include="includes\imgui\imconfig.h" />
+    <ClInclude Include="includes\imgui\imgui.h" />
+    <ClInclude Include="ctx\ctx.hpp" />
+    <ClInclude Include="sdk\sdk.hpp" />
+    <ClInclude Include="sdk\game\manager.hpp" />
+    <ClInclude Include="directx\managers\images.hpp" />
+    <ClInclude Include="bytes\bytes.hpp" />
+    <ClInclude Include="sdk\base\classes\CXConsole.hpp" />
+    <ClInclude Include="sdk\base\classes\C3DEngine.hpp" />
+    <ClInclude Include="sdk\base\classes\CWeaponSettings.hpp" />
+    <ClInclude Include="sdk\base\classes\CActor.hpp" />
+    <ClInclude Include="sdk\base\classes\CActorSystem.hpp" />
+    <ClInclude Include="sdk\base\classes\CBaseSettings.hpp" />
+    <ClInclude Include="sdk\base\classes\CCamera.hpp" />
+    <ClInclude Include="sdk\base\classes\CClipMode.hpp" />
+    <ClInclude Include="sdk\base\classes\CCompoundCharacter.hpp" />
+    <ClInclude Include="sdk\base\classes\CCryAction.hpp" />
+    <ClInclude Include="sdk\base\classes\CEidSerializer.hpp" />
+    <ClInclude Include="sdk\base\classes\CEntity.hpp" />
+    <ClInclude Include="sdk\base\classes\CEntityClass.hpp" />
+    <ClInclude Include="sdk\base\classes\CFireModeObjectBase.hpp" />
+    <ClInclude Include="sdk\base\classes\CFlowchartManager.hpp" />
+    <ClInclude Include="sdk\base\classes\CFPPlayer.hpp" />
+    <ClInclude Include="sdk\base\classes\CFrameProfilerSection.hpp" />
+    <ClInclude Include="sdk\base\classes\CFriendsManager.hpp" />
+    <ClInclude Include="sdk\base\classes\CGame.hpp" />
+    <ClInclude Include="sdk\base\classes\CGameObject.hpp" />
+    <ClInclude Include="sdk\base\classes\CGameObjectExtensionHelper.hpp" />
+    <ClInclude Include="sdk\base\classes\CGameRules.hpp" />
+    <ClInclude Include="sdk\base\classes\CHUD.hpp" />
+    <ClInclude Include="sdk\base\classes\CHUDCommon.hpp" />
+    <ClInclude Include="sdk\base\classes\CHUDSilhouettes.hpp" />
+    <ClInclude Include="sdk\base\classes\CHUDTweakMenu.hpp" />
+    <ClInclude Include="sdk\base\classes\CInventory.hpp" />
+    <ClInclude Include="sdk\base\classes\CItemProxy.hpp" />
+    <ClInclude Include="sdk\base\classes\CLobbyChat.hpp" />
+    <ClInclude Include="sdk\base\classes\CLocalProfileConfig.hpp" />
+    <ClInclude Include="sdk\base\classes\CMaskedVarT.hpp" />
+    <ClInclude Include="sdk\base\classes\COnlineAccount.hpp" />
+    <ClInclude Include="sdk\base\classes\COnlineChannel.hpp" />
+    <ClInclude Include="sdk\base\classes\COnlineProfile.hpp" />
+    <ClInclude Include="sdk\base\classes\COnlineVariables.hpp" />
+    <ClInclude Include="sdk\base\classes\CParamBlock.hpp" />
+    <ClInclude Include="sdk\base\classes\CPhysicalWorld.hpp" />
+    <ClInclude Include="sdk\base\classes\CPlayer.hpp" />
+    <ClInclude Include="sdk\base\classes\CRenderer.hpp" />
+    <ClInclude Include="sdk\base\classes\CryStringT.hpp" />
+    <ClInclude Include="sdk\base\classes\CScriptSystem.hpp" />
+    <ClInclude Include="sdk\base\classes\CScriptTable.hpp" />
+    <ClInclude Include="sdk\base\classes\CStatsArray.hpp" />
+    <ClInclude Include="sdk\base\classes\CTimeInStanceTracker.hpp" />
+    <ClInclude Include="sdk\base\classes\CTimeValue.hpp" />
+    <ClInclude Include="sdk\base\classes\CWeaponGeneral.hpp" />
+    <ClInclude Include="sdk\base\classes\CWeaponNetwork.hpp" />
+    <ClInclude Include="sdk\base\classes\CWeaponParameters.hpp" />
+    <ClInclude Include="sdk\base\enums\EBonesID.hpp" />
+    <ClInclude Include="sdk\base\enums\ECharacterClassId.hpp" />
+    <ClInclude Include="sdk\base\enums\EEntityAspects.hpp" />
+    <ClInclude Include="sdk\base\enums\EGameStatType.hpp" />
+    <ClInclude Include="sdk\base\enums\ENetReliabilityType.hpp" />
+    <ClInclude Include="sdk\base\enums\EParamStance.hpp" />
+    <ClInclude Include="sdk\base\enums\ERMIAttachmentType.hpp" />
+    <ClInclude Include="sdk\base\enums\ESMType.hpp" />
+    <ClInclude Include="sdk\base\enums\EStance.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IActor.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IActorSystem.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IClipMode.hpp" />
+    <ClInclude Include="sdk\base\interfaces\ICompoundCharacter.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IEntity.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IEntityClass.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IFireMode.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IFireModeObject.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IFriendsManager.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IGame.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IGameFramework.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IGameFrameworkListener.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IGameObject.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IGameObjectExtension.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IGameObjectProfileManager.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IGameObjectView.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IGameRules.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IInventory.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IItem.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IItemBox.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IItemEdit.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IItemProxy.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IItemView.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IMovementController.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IPhysicalWorld.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IRenderer.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IRMIMessageBody.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IScriptSystem.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IScriptTable.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IWeapon.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IWeaponGeneral.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IXmlNode.hpp" />
+    <ClInclude Include="sdk\base\math\AABB.hpp" />
+    <ClInclude Include="sdk\base\math\math.hpp" />
+    <ClInclude Include="sdk\base\math\Matrix34_tpl.hpp" />
+    <ClInclude Include="sdk\base\math\Quat_tpl.hpp" />
+    <ClInclude Include="sdk\base\math\QuatT_tpl.hpp" />
+    <ClInclude Include="sdk\base\math\Vec2_tpl.hpp" />
+    <ClInclude Include="sdk\base\math\Vec3_tpl.hpp" />
+    <ClInclude Include="sdk\base\namespaces\Game.hpp" />
+    <ClInclude Include="sdk\base\structures\ray_hit.hpp" />
+    <ClInclude Include="sdk\base\structures\SActionEvent.hpp" />
+    <ClInclude Include="sdk\base\structures\SAuthProfileInfo.hpp" />
+    <ClInclude Include="sdk\base\structures\SCollisionClass.hpp" />
+    <ClInclude Include="sdk\base\structures\ScriptAnyValue.hpp" />
+    <ClInclude Include="sdk\base\structures\SD3DPostEffectsUtils.hpp" />
+    <ClInclude Include="sdk\base\structures\SFriendInfo.hpp" />
+    <ClInclude Include="sdk\base\structures\SGameObjectExtensionRMI.hpp" />
+    <ClInclude Include="sdk\base\structures\SMasterServerInfo.hpp" />
+    <ClInclude Include="sdk\base\structures\SNetMessageDef.hpp" />
+    <ClInclude Include="sdk\base\structures\SPlatformInfo.hpp" />
+    <ClInclude Include="sdk\base\structures\SPlayerStatus.hpp" />
+    <ClInclude Include="sdk\base\structures\SSpecialMovementState.hpp" />
+    <ClInclude Include="sdk\base\structures\SStanceInfo.hpp" />
+    <ClInclude Include="sdk\base\structures\SSystemGlobalEnvironment.hpp" />
+    <ClInclude Include="sdk\base\structures\SViewParams.hpp" />
+    <ClInclude Include="sdk\base\structures\XmlNodeRef.hpp" />
+    <ClInclude Include="ctx\scan.hpp" />
+    <ClInclude Include="sdk\helper\usermgr.hpp" />
+    <ClInclude Include="sdk\helper\helper.hpp" />
+    <ClInclude Include="sdk\game\weapon.hpp" />
+    <ClInclude Include="sdk\game\aiming.hpp" />
+    <ClInclude Include="sdk\game\visuals.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="includes\hooklib\HookLib.lib" />
+    <Library Include="includes\hooklib\Zydis.lib" />
+  </ItemGroup>
+</Project>
