@@ -36,9 +36,6 @@
 #define aceid_api
 #define ACEID_API
 
-/*
-	Используется для лёгкого определения VMT
-*/
 #define WITH_ARGUMENTS
 #define CREATE_VMT_HOOK(TYPE, NAME, CODE, ARGUMENTS)						\
 	using NAME##_Using = TYPE(__fastcall*)ARGUMENTS;						\
@@ -52,9 +49,6 @@
 	CVMTHandler* NAME##_Pointer = CODE;										\
 	TYPE __fastcall NAME##_Hook ARGUMENTS 									\
 
-/*
-	Используется для получения смещения динамическим путём через переменную
-*/
 #define CREATE_FUNCTOR(TYPE, NAME, OFFSET)									\
 	TYPE NAME##_GET() {														\
 		return *reinterpret_cast< TYPE* >(this + OFFSET);					\
