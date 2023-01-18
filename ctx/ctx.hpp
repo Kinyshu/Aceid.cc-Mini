@@ -42,8 +42,9 @@ namespace ctx {
 
 	bool ui, ui_buffer;
 	bool gui_created;
+	bool gui_scripts_created;
 
-	bool gui_tabs[3];
+	bool gui_tabs[3] = { true };
 
 	bool recoil;
 	bool recoil_settings;

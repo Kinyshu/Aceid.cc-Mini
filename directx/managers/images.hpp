@@ -48,6 +48,8 @@ public:
         this->device = d;
 
         this->bytes("LOGO", logo, sizeof logo, 220, 38);
+        this->bytes("LOGO_SCRIPTS", logo_scripts, sizeof logo_scripts, 220, 38);
+
         this->bytes("BG_LOGO", bglogo, sizeof bglogo, 200, 200);
 
         this->bytes("WEAPONS", weapons, sizeof weapons, 32, 32);
