@@ -3,4 +3,9 @@
   <PropertyGroup>
     <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerAttach>true</LocalDebuggerAttach>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommand>C:\GameCenter\Warface\Bin64Release\Game.exe</LocalDebuggerCommand>
+  </PropertyGroup>
 </Project>

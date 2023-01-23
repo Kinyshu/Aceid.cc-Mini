@@ -36,8 +36,10 @@
 
 namespace gui {
 
+	char luaFunctor[128];
 	char luaBuffer[8196];
 	std::string luaCode;
+	std::string luaFunct;
 
 	CImagesManager* pImgMgr;
 	const char* bone[4] = { u8" Голова", u8" Шея", u8" Тело" };
@@ -314,13 +316,60 @@ namespace gui {
 			{
 				ImGui::Text(u8"Информацию про LUA скриптинг вы можете найти на https://aceid.cc/lua");
 				ImGui::InputTextMultiline("##Script", luaBuffer, 8196, { 660.f, 240.f }, ImGuiInputTextFlags_::ImGuiInputTextFlags_AllowTabInput);
+
 				if (ImGui::Button(u8"Выполнить скрипт", { 200.f, 30.f })) {
 					luaCode = luaBuffer;
 					if (luaCode.empty() == false) {
+						auto scripts = lua::findScripts(luaCode);
+						if (scripts.empty() == false) {
 
-						SSystemGlobalEnvironment::GetInstance()
-							->pScriptSystem
-							->ExecuteBuffer(luaCode.c_str(), luaCode.size());
+							auto code = lua::str::ltrim(luaCode, "Aceid");
+							SSystemGlobalEnvironment::GetInstance()
+								->pScriptSystem
+								->ExecuteBuffer(code.c_str(), code.size());
+
+							for (auto it : scripts) {
+
+								if (it.empty()) {
+									continue;
+								}
+
+								if (lua::str::contains(it, ".RegisterListener")) {
+									for (auto cb : lua::Callbacks) {
+
+										if (lua::str::contains(it, cb.first)) {
+
+											auto callback = lua::FindCallback(it, "(", ",");
+											if (callback.empty() || lua::str::contains(it, "()")) {
+												continue;
+											}
+
+											if (lua::Functor.find(callback) == lua::Functor.end()
+												&& lua::Functor.find(callback)->second != cb.second) {
+												lua::Functor.insert({ callback + "()", cb.second });
+											}
+										}
+									}
+								}
+
+								if (lua::str::contains(it, ".UnregisterListener")) {
+
+									auto callback = lua::FindCallback(it, "(", ")");
+									if (callback.empty()) {
+										continue;
+									}
+
+									if (lua::Functor.find(callback) != lua::Functor.end()) {
+										lua::Functor.erase(callback);
+									}
+								}
+							}
+						}
+						else {
+							SSystemGlobalEnvironment::GetInstance()
+								->pScriptSystem
+								->ExecuteBuffer(luaCode.c_str(), luaCode.size());
+						}
 					}
 				}
 			}

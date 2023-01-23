@@ -107,6 +107,8 @@ interface IScriptSystem {
 	virtual void ClearPreCachedBuffer() = 0; //
 	virtual void* Allocate(size_t sz) = 0; //
 	virtual size_t Deallocate(void* ptr) = 0; //
+
+	//ACEID_API CREATE_FUNCTOR(lua_State*, L, 0x10);
 };
 
 #endif // !ISCRIPTSYSTEM_HPP

@@ -112,9 +112,10 @@ namespace dxhook {
 			gEnv->pGame->GetIGameFramework()->RegisterListener(new CWeaponListener(), 0, EFRAMEWORKLISTENERPRIORITY::FRAMEWORKLISTENERPRIORITY_GAME);
 			gEnv->pGame->GetIGameFramework()->RegisterListener(new CVisualListener(), 0, EFRAMEWORKLISTENERPRIORITY::FRAMEWORKLISTENERPRIORITY_GAME);
 			gEnv->pGame->GetIGameFramework()->RegisterListener(new CAimingListener(), 0, EFRAMEWORKLISTENERPRIORITY::FRAMEWORKLISTENERPRIORITY_GAME);
+			gEnv->pGame->GetIGameFramework()->RegisterListener(new lua::CLuaListener(), 0, EFRAMEWORKLISTENERPRIORITY::FRAMEWORKLISTENERPRIORITY_GAME);
 		}
 
-		ShowWindow(GetConsoleWindow(), SW_HIDE);
+		//ShowWindow(GetConsoleWindow(), SW_HIDE);
 		return true;
 	}
 }
