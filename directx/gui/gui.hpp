@@ -36,9 +36,7 @@
 
 namespace gui {
 
-	char luaFunctor[128];
 	char luaBuffer[8196];
-	std::string luaCode;
 	std::string luaFunct;
 
 	CImagesManager* pImgMgr;
@@ -241,7 +239,7 @@ namespace gui {
 
 						ImGui::SetCursorPosX(15.f);
 						ImGui::SetNextItemWidth(340.f);
-						ImGui::ListBox(xorstr(u8""), &ctx::bone, bone, 3);
+						ImGui::ListBox(xorstr(u8"##Bones"), &ctx::bone, bone, 3);
 
 						ImGui::SetCursorPosX(15.f);
 						ImGui::Checkbox(xorstr(u8"Рисовать FOV"), &ctx::drawFov);
@@ -315,18 +313,18 @@ namespace gui {
 			ImGui::BeginChild("##ScriptsChild", { 670.f, 310.f });
 			{
 				ImGui::Text(u8"Информацию про LUA скриптинг вы можете найти на https://aceid.cc/lua");
-				ImGui::InputTextMultiline("##Script", luaBuffer, 8196, { 660.f, 240.f }, ImGuiInputTextFlags_::ImGuiInputTextFlags_AllowTabInput);
+				ImGui::InputTextMultiline("##Script", (char*)&luaBuffer, 8196, { 660.f, 240.f }, ImGuiInputTextFlags_::ImGuiInputTextFlags_AllowTabInput);
 
 				if (ImGui::Button(u8"Выполнить скрипт", { 200.f, 30.f })) {
-					luaCode = luaBuffer;
-					if (luaCode.empty() == false) {
-						auto scripts = lua::findScripts(luaCode);
+					ctx::luaCode = luaBuffer;
+
+					if (ctx::luaCode.empty() == false) {
+						auto scripts = lua::findScripts(ctx::luaCode);
 						if (scripts.empty() == false) {
 
-							auto code = lua::str::ltrim(luaCode, "Aceid");
-							SSystemGlobalEnvironment::GetInstance()
-								->pScriptSystem
-								->ExecuteBuffer(code.c_str(), code.size());
+							auto code = lua::str::ltrim(ctx::luaCode, "Aceid");
+							ctx::luaCode = code;
+							ctx::luaExecution = true;
 
 							for (auto it : scripts) {
 
@@ -366,9 +364,7 @@ namespace gui {
 							}
 						}
 						else {
-							SSystemGlobalEnvironment::GetInstance()
-								->pScriptSystem
-								->ExecuteBuffer(luaCode.c_str(), luaCode.size());
+							ctx::luaExecution = true;
 						}
 					}
 				}

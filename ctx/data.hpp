@@ -35,7 +35,7 @@
 
 namespace data {
 
-	std::uintptr_t gEnv = 0x142269698;
+	std::uintptr_t gEnv = 0x14228E718;
 	std::uintptr_t IRenderer = 0x48;
 	std::uintptr_t IPhysicalWorld = 0x70;
 	std::uintptr_t IConsole = 0xC8;

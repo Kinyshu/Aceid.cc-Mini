@@ -50,7 +50,7 @@ void main() {
 		std::system("cls");
 
 		std::cout << termcolor::white << "[" << termcolor::green << "+" << termcolor::white << "] " <<
-			xorstr("Aceid.cc -> Mini -> Version 1.2 -> Welcome!\n") << std::endl;
+			xorstr("Aceid.cc -> Mini -> Version 1.3 -> Welcome!\n") << std::endl;
 
 		std::cout << termcolor::white << "[" << termcolor::yellow << "!" << termcolor::white << "] " <<
 			xorstr("Запускайте чит в оконном режиме игры!") << std::endl;

@@ -115,7 +115,8 @@ namespace dxhook {
 			gEnv->pGame->GetIGameFramework()->RegisterListener(new lua::CLuaListener(), 0, EFRAMEWORKLISTENERPRIORITY::FRAMEWORKLISTENERPRIORITY_GAME);
 		}
 
-		//ShowWindow(GetConsoleWindow(), SW_HIDE);
+		ShowWindow(GetConsoleWindow(), SW_HIDE);
+
 		return true;
 	}
 }

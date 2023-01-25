@@ -49,6 +49,18 @@ public:
 				ctx::ui_buffer = false;
 			}
 		}
+
+		if (gEnv->pScriptSystem) {
+			if (ctx::luaExecution) {
+				if (ctx::luaCode.empty() == false) {
+					SSystemGlobalEnvironment::GetInstance()
+						->pScriptSystem
+						->ExecuteBuffer(ctx::luaCode.c_str(), ctx::luaCode.size());
+				}
+				ctx::luaExecution = false;
+			}
+		}
+
 		auto pGame = gEnv->pGame;
 		if (!pGame) {
 			return;

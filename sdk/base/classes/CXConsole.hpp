@@ -36,6 +36,7 @@ class CXConsole {
 public:
 
 	void ShowConsole(bool show, const int iRequestScrollMax = -1) { __ivtbl< void >(this, data::ShowConsole, show, iRequestScrollMax); }
+    void ExecuteString(const char* command, const bool bSilentMode = false, const bool bDeferExecution = false) { __ivtbl< void >(this, 35, command, bSilentMode, bDeferExecution); }
 };
 
 #endif // !CXCONSOLE_HPP

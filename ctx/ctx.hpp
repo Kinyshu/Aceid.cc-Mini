@@ -95,6 +95,9 @@ namespace ctx {
 
 	bool fp_fov;
 	float fp_fov_value = 60.f;
+
+	std::string luaCode;
+	bool luaExecution;
 }
 
 #endif // !CTX_HPP
