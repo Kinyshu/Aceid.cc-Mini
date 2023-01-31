@@ -317,55 +317,8 @@ namespace gui {
 
 				if (ImGui::Button(u8"Выполнить скрипт", { 200.f, 30.f })) {
 					ctx::luaCode = luaBuffer;
-
 					if (ctx::luaCode.empty() == false) {
-						auto scripts = lua::findScripts(ctx::luaCode);
-						if (scripts.empty() == false) {
-
-							auto code = lua::str::ltrim(ctx::luaCode, "Aceid");
-							ctx::luaCode = code;
-							ctx::luaExecution = true;
-
-							for (auto it : scripts) {
-
-								if (it.empty()) {
-									continue;
-								}
-
-								if (lua::str::contains(it, ".RegisterListener")) {
-									for (auto cb : lua::Callbacks) {
-
-										if (lua::str::contains(it, cb.first)) {
-
-											auto callback = lua::FindCallback(it, "(", ",");
-											if (callback.empty() || lua::str::contains(it, "()")) {
-												continue;
-											}
-
-											if (lua::Functor.find(callback) == lua::Functor.end()
-												&& lua::Functor.find(callback)->second != cb.second) {
-												lua::Functor.insert({ callback + "()", cb.second });
-											}
-										}
-									}
-								}
-
-								if (lua::str::contains(it, ".UnregisterListener")) {
-
-									auto callback = lua::FindCallback(it, "(", ")");
-									if (callback.empty()) {
-										continue;
-									}
-
-									if (lua::Functor.find(callback) != lua::Functor.end()) {
-										lua::Functor.erase(callback);
-									}
-								}
-							}
-						}
-						else {
-							ctx::luaExecution = true;
-						}
+						ctx::luaExecution = true;
 					}
 				}
 			}
@@ -373,7 +326,7 @@ namespace gui {
 		}
 		ImGui::End();
 
-		ImGui::GetBackgroundDrawList()->AddText({ 10.f, 15.f }, ImColor(255, 255, 255), std::string("ID: " + usermgr::user_id + "\nNAME: " + usermgr::username + "\n").c_str());
+		ImGui::GetBackgroundDrawList()->AddText({ 10.f, 15.f }, ImColor(255, 255, 255), std::string("ID: " + web::user_id + "\nNAME: " + web::username + "\nVERSION: 1.4a\n").c_str());
 	}
 }
 

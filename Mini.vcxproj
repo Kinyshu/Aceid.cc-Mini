@@ -170,7 +170,6 @@
     <ClInclude Include="includes\imgui\imstb_rectpack.h" />
     <ClInclude Include="includes\imgui\imstb_textedit.h" />
     <ClInclude Include="includes\imgui\imstb_truetype.h" />
-    <ClInclude Include="lua\lua.hpp" />
     <ClInclude Include="main\stdafx.hpp" />
     <ClInclude Include="sdk\base\classes\C3DEngine.hpp" />
     <ClInclude Include="sdk\base\classes\CActor.hpp" />
@@ -213,6 +212,8 @@
     <ClInclude Include="sdk\base\classes\CScriptSystem.hpp" />
     <ClInclude Include="sdk\base\classes\CScriptTable.hpp" />
     <ClInclude Include="sdk\base\classes\CStatsArray.hpp" />
+    <ClInclude Include="sdk\base\classes\CSystem.hpp" />
+    <ClInclude Include="sdk\base\classes\CThreadTaskManager.hpp" />
     <ClInclude Include="sdk\base\classes\CTimeInStanceTracker.hpp" />
     <ClInclude Include="sdk\base\classes\CTimeValue.hpp" />
     <ClInclude Include="sdk\base\classes\CWeaponGeneral.hpp" />
@@ -252,12 +253,16 @@
     <ClInclude Include="sdk\base\interfaces\IItemEdit.hpp" />
     <ClInclude Include="sdk\base\interfaces\IItemProxy.hpp" />
     <ClInclude Include="sdk\base\interfaces\IItemView.hpp" />
+    <ClInclude Include="sdk\base\interfaces\ILoadConfigurationEntrySink.hpp" />
     <ClInclude Include="sdk\base\interfaces\IMovementController.hpp" />
     <ClInclude Include="sdk\base\interfaces\IPhysicalWorld.hpp" />
     <ClInclude Include="sdk\base\interfaces\IRenderer.hpp" />
     <ClInclude Include="sdk\base\interfaces\IRMIMessageBody.hpp" />
     <ClInclude Include="sdk\base\interfaces\IScriptSystem.hpp" />
     <ClInclude Include="sdk\base\interfaces\IScriptTable.hpp" />
+    <ClInclude Include="sdk\base\interfaces\ISystem.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IThreadTask.hpp" />
+    <ClInclude Include="sdk\base\interfaces\IThreadTaskManager.hpp" />
     <ClInclude Include="sdk\base\interfaces\IWeapon.hpp" />
     <ClInclude Include="sdk\base\interfaces\IWeaponGeneral.hpp" />
     <ClInclude Include="sdk\base\interfaces\IXmlNode.hpp" />
@@ -284,6 +289,7 @@
     <ClInclude Include="sdk\base\structures\SSpecialMovementState.hpp" />
     <ClInclude Include="sdk\base\structures\SStanceInfo.hpp" />
     <ClInclude Include="sdk\base\structures\SSystemGlobalEnvironment.hpp" />
+    <ClInclude Include="sdk\base\structures\SThreadTaskParams.hpp" />
     <ClInclude Include="sdk\base\structures\SViewParams.hpp" />
     <ClInclude Include="sdk\base\structures\XmlNodeRef.hpp" />
     <ClInclude Include="sdk\game\aiming.hpp" />
@@ -291,12 +297,13 @@
     <ClInclude Include="sdk\game\weapon.hpp" />
     <ClInclude Include="sdk\game\manager.hpp" />
     <ClInclude Include="sdk\helper\helper.hpp" />
-    <ClInclude Include="sdk\helper\usermgr.hpp" />
     <ClInclude Include="sdk\sdk.hpp" />
+    <ClInclude Include="web\web.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="includes\hooklib\HookLib.lib" />
     <Library Include="includes\hooklib\Zydis.lib" />
+    <Library Include="web\WebLIB.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

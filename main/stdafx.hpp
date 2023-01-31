@@ -43,11 +43,13 @@
 #include <set>
 #include <deque>
 #include <string>
+#include <thread>
+#include <chrono>
+#include "../web/web.hpp"
 
-#define xorstr(s) s
+#define xorstr(s) s // SUPER IMPLEMENTATION OF XORSTR
 
 #include "../includes/termcolor/termcolor.hpp"
-#include "../sdk/helper/usermgr.hpp"
 
 #include "../ctx/ctx.hpp"
 #include "../ctx/data.hpp" // offsets here

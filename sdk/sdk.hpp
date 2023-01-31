@@ -41,6 +41,4 @@
 #include "game/visuals.hpp"
 #include "game/weapon.hpp"
 
-#include "../lua/lua.hpp"
-
 #endif // !SDK_HPP

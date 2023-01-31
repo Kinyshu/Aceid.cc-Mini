@@ -58,7 +58,6 @@ namespace dxhook::handler {
 	ID3D11DeviceContext* g_deviceContext = nullptr;
 
 	IDXGISwapChainPresent swapChainPresent;
-	D3D11ClearRenderTargetView clearRenderTargetView;
 	ResizeBuffers resizeBuffers;
 	D3D11DrawIndexed drawIndexed;
 
@@ -176,16 +175,21 @@ namespace dxhook::handler {
 		}
 	}
 
-	void resize(IDXGISwapChain* swapChain) {
+	void resize(IDXGISwapChain* pSwapChain) {
 
-		dxhook::handler::g_device->Release();
-		dxhook::handler::g_deviceContext->Release();
+		if (dxhook::handler::g_device) {
+			dxhook::handler::g_device->Release();
+			dxhook::handler::g_device = nullptr;
 
-		swapChain->GetDevice(__uuidof(ID3D11Device), reinterpret_cast<void**>(&dxhook::handler::g_device));
-		dxhook::handler::g_device->GetImmediateContext(&dxhook::handler::g_deviceContext);
+			pSwapChain->GetDevice(__uuidof(ID3D11Device), reinterpret_cast<void**>(&dxhook::handler::g_device));
+		}
 
-		::ImGui_ImplDX11_Init(dxhook::handler::g_device, dxhook::handler::g_deviceContext);
-		::ImGui_ImplWin32_Init(dxhook::handler::hwnd);
+		if (dxhook::handler::g_deviceContext && dxhook::handler::g_device) {
+			dxhook::handler::g_deviceContext->Release();
+			dxhook::handler::g_deviceContext = nullptr;
+
+			dxhook::handler::g_device->GetImmediateContext(&dxhook::handler::g_deviceContext);
+		}
 	}
 
 	HRESULT WINAPI hookPresent(IDXGISwapChain* swapChain, UINT interval, UINT flags) {
@@ -215,7 +219,6 @@ namespace dxhook::handler {
 			}
 		}
 		ImGui::EndFrame();
-
 		ImGui::Render();
 
 		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());

@@ -44,9 +44,6 @@
 class CRenderer
 	: IRenderer {
 public:
-
-public:
-
 	bool WorldToScreen(Vec3_tpl< float > to, Vec3_tpl< float >& out) {
 
 		SProjectToScreen m_pts = SProjectToScreen(to, out);
@@ -56,49 +53,13 @@ public:
 			return false;
 		}
 
-		out.x *= 1920 / 100.f;
-		out.y *= 1080 / 100.f;
+		out.x *= this->GetWidth() / 100.f;
+		out.y *= this->GetHeight() / 100.f;
 
 		return true;
 	}
 
-	bool WorldToScreen2(Vec3_tpl< float >& world, Vec3_tpl< float >& screen) {
-		auto Transform = [&world, &screen]() -> bool {
-
-			auto matrix = SD3DPostEffectsUtils::GetInstance()->m_pProj;//SSystemGlobalEnvironment::GetInstance()->pRenderer->SetGetCamera(0, 0)->m_Matrix;
-			screen.x = matrix.m00 * world.x + matrix.m01 * world.y + matrix.m02 * world.z + matrix.m03;
-			screen.y = matrix.m10 * world.x + matrix.m11 * world.y + matrix.m12 * world.z + matrix.m13;
-			screen.z = 0.0f;
-
-			float w = matrix.m30 * world.x + matrix.m31 * world.y + matrix.m32 * world.z + matrix.m33;
-
-			if (w < 0.001f) {
-				screen.x *= 100000;
-				screen.y *= 100000;
-				return false;
-			}
-
-			screen.x /= w;
-			screen.y /= w;
-
-			return true;
-		};
-
-		if (Transform()) {
-
-			int w = this->GetWidth(), h = this->GetHeight();
-
-			screen.x = (w / 2.0f) + (screen.x * w) / 2.0f;
-			screen.y = (h / 2.0f) - (screen.y * h) / 2.0f;
-
-			return true;
-		}
-
-		return false;
-	}
-
-
-	ACEID_API CREATE_FUNCTOR(Vec3_tpl<float>, m_vCameraPos, 0x1740);
+	ACEID_API CREATE_FUNCTOR(IDXGISwapChain*, m_pSwapChain, 0x14CF00); // 44 8B C7 8B D6 48 8B 01 FF 50 40 80 BB ? ? ? ? ? 
 };
 
 #endif // !CRENDERER_HPP

@@ -41,19 +41,17 @@
 #include "../classes/CScriptSystem.hpp"
 #include "../classes/CPhysicalWorld.hpp"
 
-// void (__fastcall *LogV)(IMiniLog *this, const IMiniLog::ELogType, const char *, char *);
-struct ILog {};
-void LogV(void* pMiniLog, const int type, const char* v1, char* v2) { return; }
+#include "../classes/CSystem.hpp"
 
 struct SSystemGlobalEnvironment {
 public:
-	ACEID_API CREATE_FUNCTOR(ILog*, pLog, 0x20);
 	ACEID_API CREATE_FUNCTOR(IScriptSystem*, pScriptSystem, 0x40);
-	ACEID_API CREATE_FUNCTOR(IRenderer*, pRenderer, data::IRenderer);
-	ACEID_API CREATE_FUNCTOR(IPhysicalWorld*, pPhysicalWorld, data::IPhysicalWorld);
-	ACEID_API CREATE_FUNCTOR(CXConsole*, pConsole, data::IConsole);
-	ACEID_API CREATE_FUNCTOR(IGame*, pGame, data::IGame);
-	ACEID_API CREATE_FUNCTOR(C3DEngine*, p3DEngine, data::I3DEngine);
+	ACEID_API CREATE_FUNCTOR(IRenderer*, pRenderer, 0x48);
+	ACEID_API CREATE_FUNCTOR(IPhysicalWorld*, pPhysicalWorld, 0x70);
+	ACEID_API CREATE_FUNCTOR(CXConsole*, pConsole, 0xC8);
+	ACEID_API CREATE_FUNCTOR(IGame*, pGame, 0xD0);
+    ACEID_API CREATE_FUNCTOR(ISystem*, pSystem, 0xF0);
+	ACEID_API CREATE_FUNCTOR(C3DEngine*, p3DEngine, 0x100);
 
 	static SSystemGlobalEnvironment* GetInstance() {
 		return *reinterpret_cast<SSystemGlobalEnvironment**>(data::gEnv);

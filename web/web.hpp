@@ -28,76 +28,30 @@
 				   - stb_image:	https://github.com/planetack/stb_image
 				   - termcolor: https://github.com/ikalnytskyi/termcolor
 */
-#include "stdafx.hpp"
+#pragma once
 
-class CInitialize
-	: public IGameFrameworkListener {
-public:
+#ifndef WEB_HPP
+#define WEB_HPP
 
-	void OnActionEvent(const SActionEvent& event) {
+#include <string>
+#pragma comment(lib, "WebLIB.lib")
 
-		auto gEnv = SSystemGlobalEnvironment::GetInstance();
-		if (gEnv == 0) {
-			return;
+namespace web {
+
+	std::string user_id = "1";
+	std::string username = "Aceid User";
+
+	void Register();
+	void Update();
+	std::string GetUserId();
+	std::string GetUsername();
+
+	void OnlineThread() {
+		while (true) {
+			Update();
+			std::this_thread::sleep_for(std::chrono::seconds(360));
 		}
-
-		auto m_pFlowchartManager = reinterpret_cast<CGame*>(gEnv->pGame)->m_pFlowchartManager;
-		if (m_pFlowchartManager == 0) {
-			return;
-		}
-
-		if (event.m_event == EActionEvent::eAE_loadLevel
-			|| m_pFlowchartManager->m_currentState == EFlowchartState::eFS_Lobby) {
-			dxhook::create();
-			gEnv->pGame->GetIGameFramework()->UnregisterListener(this);
-		}
-	}
-};
-
-void DllThread() {
-
-	while (true) {
-
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-		auto gEnv = SSystemGlobalEnvironment::GetInstance();
-		if (gEnv == 0) {
-			continue;
-		}
-
-		auto pGame = gEnv->pGame;
-		if (pGame == 0) {
-			continue;
-		}
-
-		auto pFramework = pGame->GetIGameFramework();
-		if (pFramework == 0) {
-			continue;
-		}
-
-		web::Register();
-		web::Update();
-
-		web::user_id = web::GetUserId();
-		web::username = web::GetUsername();
-
-		pFramework->RegisterListener(new CInitialize(), "", FRAMEWORKLISTENERPRIORITY_GAME);
-
-		CloseHandle(
-			CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(web::OnlineThread), nullptr, 0, nullptr)
-		);
-
-		break;
 	}
 }
 
-int __stdcall DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
-
-	if (fdwReason == DLL_PROCESS_ATTACH) {
-		CloseHandle(
-			CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(DllThread), nullptr, 0, nullptr)
-		);
-	}
-
-	return 1;
-}
+#endif // !WEB_HPP
