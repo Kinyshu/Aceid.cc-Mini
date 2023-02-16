@@ -43,10 +43,15 @@
 	CVMTHandler* NAME##_Pointer = CODE;										\
 	TYPE __fastcall NAME##_Hook ARGUMENTS 									\
 
-#define CREATE_VMT_STATIC_HOOK(TYPE, NAME, CODE, ARGUMENTS)					\
+#define CREATE_VMT_STATIC_HOOK(TYPE, NAME, ARGUMENTS)						\
 	using NAME##_Using = TYPE(__fastcall*)ARGUMENTS;						\
 	NAME##_Using NAME##_Original;											\
-	CVMTHandler* NAME##_Pointer = CODE;										\
+	CVMTHandler* NAME##_Pointer = nullptr;									\
+	TYPE __fastcall NAME##_Hook ARGUMENTS 									\
+
+#define CREATE_STATIC_HOOK(TYPE, NAME, ARGUMENTS)							\
+	using NAME##_Using = TYPE(__fastcall*)ARGUMENTS;						\
+	NAME##_Using NAME##_Original;											\
 	TYPE __fastcall NAME##_Hook ARGUMENTS 									\
 
 #define CREATE_FUNCTOR(TYPE, NAME, OFFSET)									\

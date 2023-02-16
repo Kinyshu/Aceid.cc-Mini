@@ -45,6 +45,7 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include <mutex>
 #include "../web/web.hpp"
 
 #define xorstr(s) s // SUPER IMPLEMENTATION OF XORSTR
@@ -54,9 +55,9 @@
 #include "../ctx/ctx.hpp"
 #include "../ctx/data.hpp" // offsets here
 
+#include "../includes/hooklib/HookLib.h"
 #include "../sdk/sdk.hpp"
 
-#include "../includes/hooklib/HookLib.h"
 #include "../directx/hook/handler.hpp"
 #include "../directx/hook/hook.hpp"
 

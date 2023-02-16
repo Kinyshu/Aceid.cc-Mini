@@ -41,4 +41,6 @@
 #include "game/visuals.hpp"
 #include "game/weapon.hpp"
 
+#include "game/actions.hpp"
+
 #endif // !SDK_HPP

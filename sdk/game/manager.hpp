@@ -34,6 +34,7 @@
 
 #include <chrono>
 #include <time.h>
+#include "rmi.hpp"
 
 namespace manager {
 

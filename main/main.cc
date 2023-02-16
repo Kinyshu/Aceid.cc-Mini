@@ -94,9 +94,7 @@ void DllThread() {
 int __stdcall DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
 
 	if (fdwReason == DLL_PROCESS_ATTACH) {
-		CloseHandle(
-			CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(DllThread), nullptr, 0, nullptr)
-		);
+		CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(DllThread), nullptr, 0, nullptr);
 	}
 
 	return 1;

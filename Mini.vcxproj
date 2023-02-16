@@ -292,7 +292,9 @@
     <ClInclude Include="sdk\base\structures\SThreadTaskParams.hpp" />
     <ClInclude Include="sdk\base\structures\SViewParams.hpp" />
     <ClInclude Include="sdk\base\structures\XmlNodeRef.hpp" />
+    <ClInclude Include="sdk\game\actions.hpp" />
     <ClInclude Include="sdk\game\aiming.hpp" />
+    <ClInclude Include="sdk\game\rmi.hpp" />
     <ClInclude Include="sdk\game\visuals.hpp" />
     <ClInclude Include="sdk\game\weapon.hpp" />
     <ClInclude Include="sdk\game\manager.hpp" />

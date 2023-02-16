@@ -52,21 +52,25 @@ interface IRenderer {
 	};
 
 	CCamera* SetGetCamera(const CCamera* pCamera, bool bSet) {
-		return __ivtbl< CCamera* >(this, data::SetGetCamera, pCamera, bSet);
+		return __vtbl< CCamera*, 68 >(this, pCamera, bSet);
 	}
 
 	int GetWidth() { 
-		return __ivtbl< int >(this, data::GetWidth);
+		return __vtbl< int, 102 >(this);
 	}
 
 	int GetHeight() {
-		return __ivtbl< int >(this, data::GetHeight);
+		return __vtbl< int, 103 >(this);
 	}
 
 	bool ProjectToScreenInternal(SProjectToScreen* proj) {
 		return __vtbl< bool, 112 >(this, proj);
 	}
-
+	
+	void GetWindowSize(int* width, int* height) {
+		*width = this->GetWidth();
+		*height = this->GetHeight();
+	}
 };
 
 #endif // !IRENDERER_HPP

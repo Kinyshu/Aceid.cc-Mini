@@ -119,25 +119,15 @@ public:
 								continue;
 							}
 
-							static std::string target;
+							static std::string target[3] =
+							{ "Bip01 Head", "Bip01 Neck", "Bip01 Spine" };
 
-							int identifier, m_identifier;
 							Vec3_tpl<float> position, m_position;
 
-							if (ctx::bone == 0) {
-								target = "Bip01 Head";
-							}
-							else if (ctx::bone == 1) {
-								target = "Bip01 Neck";
-							}
-							else if (ctx::bone == 2) {
-								target = "Bip01 Spine";
-							}
-
-							position = pActor->GetBonePositionByName(target);
+							position = pActor->GetBonePositionByName(target[ctx::bone]);
 							m_position = gEnv->pRenderer->SetGetCamera(nullptr, false)->m_Matrix.GetTranslation();
 
-							if (manager::buildRWITrajectory(m_position, position)) {
+							if (manager::buildRWITrajectory(m_position, position) || ctx::wallshot) {
 
 								if (manager::calculateFov(position) <= ctx::fov || ctx::ignoreFov) {
 

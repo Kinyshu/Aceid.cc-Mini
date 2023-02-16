@@ -93,6 +93,8 @@ namespace ctx {
 	bool weapons;
 	bool riggidBody;
 
+	bool wallshot;
+
 	bool fp_fov;
 	float fp_fov_value = 60.f;
 

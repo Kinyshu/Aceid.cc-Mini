@@ -61,17 +61,19 @@ interface IPhysicalWorld {
 
 		SRWIParams rp;
 		::memset(&rp, 0, sizeof SRWIParams);
-		rp.org = org;
-		rp.dir = dir;
-		rp.objtypes = objtypes;
-		rp.flags = flags;
-		rp.hits = hits;
-		rp.nMaxHits = nMaxHits;
-		rp.pForeignData = pForeignData;
-		rp.iForeignData = iForeignData;
-		rp.phitLast = phitLast;
-		rp.pSkipEnts = pSkipEnts;
-		rp.nSkipEnts = nSkipEnts;
+		{
+			rp.org = org;
+			rp.dir = dir;
+			rp.objtypes = objtypes;
+			rp.flags = flags;
+			rp.hits = hits;
+			rp.nMaxHits = nMaxHits;
+			rp.pForeignData = pForeignData;
+			rp.iForeignData = iForeignData;
+			rp.phitLast = phitLast;
+			rp.pSkipEnts = pSkipEnts;
+			rp.nSkipEnts = nSkipEnts;
+		}
 
 		return this->RayWorldIntersection(rp, pNameTag, iCaller);
 	}

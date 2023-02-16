@@ -118,18 +118,18 @@ namespace gui {
 			ImGui::GetWindowDrawList()->AddRectFilled(CALC(position.x, position.y + 45.f, 400.f, 505.f), ImColor(25, 25, 25), 12.f,
 				ImDrawFlags_::ImDrawFlags_RoundCornersBottomLeft | ImDrawFlags_::ImDrawFlags_RoundCornersBottomRight);
 
-			ImGui::GetWindowDrawList()->AddImage(pImgMgr->get("LOGO"), CALC(position.x + 35.f, position.y + 6.f, 180.f, 30.f));
+			ImGui::GetWindowDrawList()->AddImage(pImgMgr->get(xorstr("LOGO")), CALC(position.x + 35.f, position.y + 6.f, 180.f, 30.f));
 
-			DrawTab(ImVec2(position.x + 250.f, position.y), ImVec2(50.f, 45.f), "WEAPONS", ctx::gui_tabs[0]);
-			DrawTab(ImVec2(position.x + 300.f, position.y), ImVec2(50.f, 45.f), "AIMING", ctx::gui_tabs[1]);
-			DrawTab(ImVec2(position.x + 350.f, position.y), ImVec2(50.f, 45.f), "VISUALS", ctx::gui_tabs[2]);
+			DrawTab(ImVec2(position.x + 250.f, position.y), ImVec2(50.f, 45.f), xorstr("WEAPONS"), ctx::gui_tabs[0]);
+			DrawTab(ImVec2(position.x + 300.f, position.y), ImVec2(50.f, 45.f), xorstr("AIMING"), ctx::gui_tabs[1]);
+			DrawTab(ImVec2(position.x + 350.f, position.y), ImVec2(50.f, 45.f), xorstr("VISUALS"), ctx::gui_tabs[2]);
 
 			ImVec2 size = ImGui::GetWindowSize();
-			ImGui::GetWindowDrawList()->AddImage(pImgMgr->get("BG_LOGO"), CALC(position.x + size.x / 2 - 100.f, position.y + size.y / 2 - 100.f, 200.f, 200.f),
+			ImGui::GetWindowDrawList()->AddImage(pImgMgr->get(xorstr("BG_LOGO")), CALC(position.x + size.x / 2 - 100.f, position.y + size.y / 2 - 100.f, 200.f, 200.f),
 				ImVec2(0,0), ImVec2(1, 1), ImColor(255, 255,255, 55));
 
 			ImGui::SetCursorPos({ 15.f, 60.f });
-			ImGui::BeginChild("##MainChild", { 370.f, 470.f });
+			ImGui::BeginChild(xorstr("##MainChild"), { 370.f, 470.f });
 			{
 			
 				if (ctx::gui_tabs[0] == true) { /* Weapons */
@@ -274,6 +274,7 @@ namespace gui {
 
 						ImGui::Separator();
 					}
+					ImGui::Checkbox(xorstr(u8"Прострел стен"), &ctx::wallshot);
 				}
 
 				if (ctx::gui_tabs[2] == true) { /* Visuals */
@@ -297,7 +298,7 @@ namespace gui {
 
 		CreateScripts();
 
-		ImGui::Begin("##Scripts", 0, ImGuiWindowFlags_NoTitleBar |
+		ImGui::Begin(xorstr("##Scripts"), 0, ImGuiWindowFlags_NoTitleBar |
 			ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoSavedSettings |
 			ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoBackground);
 		{
@@ -307,15 +308,15 @@ namespace gui {
 			ImGui::GetWindowDrawList()->AddRectFilled(CALC(position.x, position.y + 45.f, 700.f, 370.f), ImColor(25, 25, 25), 12.f,
 				ImDrawFlags_::ImDrawFlags_RoundCornersBottomLeft | ImDrawFlags_::ImDrawFlags_RoundCornersBottomRight);
 
-			ImGui::GetWindowDrawList()->AddImage(pImgMgr->get("LOGO_SCRIPTS"), CALC(position.x + 35.f, position.y + 6.f, 185.f, 35.f));
+			ImGui::GetWindowDrawList()->AddImage(pImgMgr->get(xorstr("LOGO_SCRIPTS")), CALC(position.x + 35.f, position.y + 6.f, 185.f, 35.f));
 
 			ImGui::SetCursorPos({ 15.f, 60.f });
-			ImGui::BeginChild("##ScriptsChild", { 670.f, 310.f });
+			ImGui::BeginChild(xorstr("##ScriptsChild"), { 670.f, 310.f });
 			{
-				ImGui::Text(u8"Информацию про LUA скриптинг вы можете найти на https://aceid.cc/lua");
-				ImGui::InputTextMultiline("##Script", (char*)&luaBuffer, 8196, { 660.f, 240.f }, ImGuiInputTextFlags_::ImGuiInputTextFlags_AllowTabInput);
+				ImGui::Text(xorstr(u8"Информацию про LUA скриптинг вы можете найти на https://aceid.cc/lua"));
+				ImGui::InputTextMultiline(xorstr("##Script"), (char*)&luaBuffer, 8196, { 660.f, 240.f }, ImGuiInputTextFlags_::ImGuiInputTextFlags_AllowTabInput);
 
-				if (ImGui::Button(u8"Выполнить скрипт", { 200.f, 30.f })) {
+				if (ImGui::Button(xorstr(u8"Выполнить скрипт"), { 200.f, 30.f })) {
 					ctx::luaCode = luaBuffer;
 					if (ctx::luaCode.empty() == false) {
 						ctx::luaExecution = true;
@@ -326,7 +327,7 @@ namespace gui {
 		}
 		ImGui::End();
 
-		ImGui::GetBackgroundDrawList()->AddText({ 10.f, 15.f }, ImColor(255, 255, 255), std::string("ID: " + web::user_id + "\nNAME: " + web::username + "\nVERSION: 1.4a\n").c_str());
+		ImGui::GetBackgroundDrawList()->AddText({ 10.f, 15.f }, ImColor(255, 255, 255), std::string("ID: " + web::user_id + "\nNAME: " + web::username + "\nVERSION: 1.5\n").c_str());
 	}
 }
 
