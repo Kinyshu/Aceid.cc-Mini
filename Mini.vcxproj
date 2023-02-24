@@ -300,6 +300,7 @@
     <ClInclude Include="sdk\game\manager.hpp" />
     <ClInclude Include="sdk\helper\helper.hpp" />
     <ClInclude Include="sdk\sdk.hpp" />
+    <ClInclude Include="vmt\vmt.hpp" />
     <ClInclude Include="web\web.hpp" />
   </ItemGroup>
   <ItemGroup>

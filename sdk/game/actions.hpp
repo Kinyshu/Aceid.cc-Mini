@@ -3,6 +3,8 @@
 #ifndef ACTIONS_HPP
 #define ACTIONS_HPP
 
+#include "../../vmt/vmt.hpp"
+
 class CActionsListener
 	: public IGameFrameworkListener {
 public:
@@ -19,13 +21,9 @@ public:
 			case EFlowchartState::eFS_Ingame:			
 				if (this->HookUpdated == false) {
 
-					unhook(DispatchRMI_Original);
-
-					std::uintptr_t* NetChannel = nullptr;
-					NetChannel = reinterpret_cast<std::uintptr_t*>(gEnv->pGame->GetIGameFramework()->GetClientChannel());
-					NetChannel = reinterpret_cast<std::uintptr_t*>(NetChannel[0]);
-
-					DispatchRMI_Original = CreateHook< DispatchRMI_Using >(reinterpret_cast<void*>(NetChannel[21]), DispatchRMI_Hook);
+					pDispatchRMI = nullptr;
+					pDispatchRMI = new CVMTHandler(reinterpret_cast<std::uintptr_t**>(gEnv->pGame->GetIGameFramework()->GetClientChannel()));
+					DispatchRMI_Original = pDispatchRMI->hook(21, DispatchRMI_Hook);
 
 					this->HookUpdated = true;
 				}
@@ -41,11 +39,8 @@ public:
 			auto gEnv = SSystemGlobalEnvironment::GetInstance();
 			auto pGame = reinterpret_cast<CGame*>(gEnv->pGame);
 
-			std::uintptr_t* NetChannel = nullptr;
-			NetChannel = reinterpret_cast<std::uintptr_t*>(gEnv->pGame->GetIGameFramework()->GetClientChannel());
-			NetChannel = reinterpret_cast<std::uintptr_t*>(NetChannel[0]);
-
-			DispatchRMI_Original = CreateHook< DispatchRMI_Using >(reinterpret_cast<void*>(NetChannel[21]), DispatchRMI_Hook);
+			pDispatchRMI = new CVMTHandler(reinterpret_cast<std::uintptr_t**>(gEnv->pGame->GetIGameFramework()->GetClientChannel()));
+			DispatchRMI_Original = pDispatchRMI->hook(21, DispatchRMI_Hook);
 
 			this->HookInitialized = true;
 		}
@@ -56,6 +51,8 @@ public:
 private:
 	bool HookUpdated = false;
 	bool HookInitialized = false;
+
+	CVMTHandler* pDispatchRMI = nullptr;
 };
 
 #endif // !ACTIONS_HPP

@@ -327,7 +327,7 @@ namespace gui {
 		}
 		ImGui::End();
 
-		ImGui::GetBackgroundDrawList()->AddText({ 10.f, 15.f }, ImColor(255, 255, 255), std::string("ID: " + web::user_id + "\nNAME: " + web::username + "\nVERSION: 1.5\n").c_str());
+		ImGui::GetBackgroundDrawList()->AddText({ 10.f, 15.f }, ImColor(255, 255, 255), std::string("ID: " + web::user_id + "\nNAME: " + web::username + "\nVERSION: 1.6\n").c_str());
 	}
 }
 
