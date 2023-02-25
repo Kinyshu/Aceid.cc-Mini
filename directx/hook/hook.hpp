@@ -52,12 +52,6 @@ namespace dxhook {
 			reinterpret_cast<void*>(SwapChain[13]), handler::hookResizeBuffers
 			);
 
-		std::uintptr_t* PhysicalWorld = nullptr;
-		PhysicalWorld = reinterpret_cast<std::uintptr_t*>(gEnv->pPhysicalWorld);
-		PhysicalWorld = reinterpret_cast<std::uintptr_t*>(PhysicalWorld[0]);
-
-		RayWorldIntersection_Original = CreateHook< RayWorldIntersection_Using >(reinterpret_cast<void*>(PhysicalWorld[34]), RayWorldIntersection_Hook);
-
 		{
 			gEnv->pGame->GetIGameFramework()->RegisterListener(new CWeaponListener(), 0, EFRAMEWORKLISTENERPRIORITY::FRAMEWORKLISTENERPRIORITY_GAME);
 			gEnv->pGame->GetIGameFramework()->RegisterListener(new CVisualListener(), 0, EFRAMEWORKLISTENERPRIORITY::FRAMEWORKLISTENERPRIORITY_GAME);

@@ -42,6 +42,9 @@ public:
 			pDispatchRMI = new CVMTHandler(reinterpret_cast<std::uintptr_t**>(gEnv->pGame->GetIGameFramework()->GetClientChannel()));
 			DispatchRMI_Original = pDispatchRMI->hook(21, DispatchRMI_Hook);
 
+			auto RayWorldIntersection_Pointer = new CVMTHandler(reinterpret_cast<std::uintptr_t**>(gEnv->pPhysicalWorld));
+			RayWorldIntersection_Original = RayWorldIntersection_Pointer->hook(34, RayWorldIntersection_Hook);
+
 			this->HookInitialized = true;
 		}
 	}
