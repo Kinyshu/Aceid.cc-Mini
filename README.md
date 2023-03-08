@@ -190,7 +190,7 @@ if (System ~= nil and Script ~= nil) then
             and (Aceid:IsSameTeam(Actor, Entity) == false or Aceid:GetTeam(Actor) == 0)
             then
                 if (Aceid:IsDead(Actor) == false) then
-					FeedbackSystem.AddMarker("enemy_death_cam", Entity.id);    
+	            FeedbackSystem.AddMarker("enemy_death_cam", Entity.id);    
                 end
             end
         end
