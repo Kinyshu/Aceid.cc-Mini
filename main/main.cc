@@ -41,60 +41,31 @@ public:
 			return;
 		}
 
-		auto m_pFlowchartManager = reinterpret_cast<CGame*>(gEnv->pGame)->m_pFlowchartManager;
-		if (m_pFlowchartManager == 0) {
-			return;
-		}
-
-		if (event.m_event == EActionEvent::eAE_loadLevel
-			|| m_pFlowchartManager->m_currentState == EFlowchartState::eFS_Lobby) {
-			dxhook::create();
-			gEnv->pGame->GetIGameFramework()->UnregisterListener(this);
-		}
+		dxhook::create();
+		gEnv->pGame->GetIGameFramework()->UnregisterListener(this);
 	}
 };
-
-void DllThread() {
-
-	while (true) {
-
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-		auto gEnv = SSystemGlobalEnvironment::GetInstance();
-		if (gEnv == 0) {
-			continue;
-		}
-
-		auto pGame = gEnv->pGame;
-		if (pGame == 0) {
-			continue;
-		}
-
-		auto pFramework = pGame->GetIGameFramework();
-		if (pFramework == 0) {
-			continue;
-		}
-
-		web::Register();
-		web::Update();
-
-		web::user_id = web::GetUserId();
-		web::username = web::GetUsername();
-
-		pFramework->RegisterListener(new CInitialize(), "", FRAMEWORKLISTENERPRIORITY_GAME);
-
-		CloseHandle(
-			CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(web::OnlineThread), nullptr, 0, nullptr)
-		);
-
-		break;
-	}
-}
 
 int __stdcall DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
 
 	if (fdwReason == DLL_PROCESS_ATTACH) {
-		CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(DllThread), nullptr, 0, nullptr);
+
+		auto gEnv = SSystemGlobalEnvironment::GetInstance();
+		if (gEnv == 0) {
+			return 0;
+		}
+
+		auto pGame = gEnv->pGame;
+		if (pGame == 0) {
+			return 0;
+		}
+
+		auto pFramework = pGame->GetIGameFramework();
+		if (pFramework == 0) {
+			return 0;
+		}
+
+		pFramework->RegisterListener(new CInitialize(), "", FRAMEWORKLISTENERPRIORITY_GAME);
 	}
 
 	return 1;

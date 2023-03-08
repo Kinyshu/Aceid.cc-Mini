@@ -36,16 +36,21 @@ public:
 		}
 		
 		if (this->HookInitialized == false) {
+
 			auto gEnv = SSystemGlobalEnvironment::GetInstance();
 			auto pGame = reinterpret_cast<CGame*>(gEnv->pGame);
+			auto pFramework = gEnv->pGame->GetIGameFramework();
 
-			pDispatchRMI = new CVMTHandler(reinterpret_cast<std::uintptr_t**>(gEnv->pGame->GetIGameFramework()->GetClientChannel()));
-			DispatchRMI_Original = pDispatchRMI->hook(21, DispatchRMI_Hook);
+			if (pFramework && pFramework->GetClientChannel()) {
 
-			auto RayWorldIntersection_Pointer = new CVMTHandler(reinterpret_cast<std::uintptr_t**>(gEnv->pPhysicalWorld));
-			RayWorldIntersection_Original = RayWorldIntersection_Pointer->hook(34, RayWorldIntersection_Hook);
+				pDispatchRMI = new CVMTHandler(reinterpret_cast<std::uintptr_t**>(gEnv->pGame->GetIGameFramework()->GetClientChannel()));
+				DispatchRMI_Original = pDispatchRMI->hook(21, DispatchRMI_Hook);
 
-			this->HookInitialized = true;
+				auto RayWorldIntersection_Pointer = new CVMTHandler(reinterpret_cast<std::uintptr_t**>(gEnv->pPhysicalWorld));
+				RayWorldIntersection_Original = RayWorldIntersection_Pointer->hook(34, RayWorldIntersection_Hook);
+
+				this->HookInitialized = true;
+			}
 		}
 	}
 

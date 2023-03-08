@@ -126,8 +126,8 @@
       <SDLCheck>false</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <Optimization>MinSpace</Optimization>
-      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <Optimization>MaxSpeed</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <CallingConvention>FastCall</CallingConvention>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -161,7 +161,6 @@
     <ClInclude Include="directx\hook\handler.hpp" />
     <ClInclude Include="directx\hook\hook.hpp" />
     <ClInclude Include="directx\managers\images.hpp" />
-    <ClInclude Include="includes\hooklib\HookLib.h" />
     <ClInclude Include="includes\imgui\imconfig.h" />
     <ClInclude Include="includes\imgui\imgui.h" />
     <ClInclude Include="includes\imgui\imgui_impl_dx11.h" />
@@ -301,12 +300,6 @@
     <ClInclude Include="sdk\helper\helper.hpp" />
     <ClInclude Include="sdk\sdk.hpp" />
     <ClInclude Include="vmt\vmt.hpp" />
-    <ClInclude Include="web\web.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="includes\hooklib\HookLib.lib" />
-    <Library Include="includes\hooklib\Zydis.lib" />
-    <Library Include="web\WebLIB.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

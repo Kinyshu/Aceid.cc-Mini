@@ -48,10 +48,12 @@ public:
 	class CItemBox 
 		: IItemBox, IItemEdit {
 	public:
-		CItemProxy* m_pItem;
-		unsigned int m_ownerId;
-		Vec3_tpl<float> m_fireTarget;
-		class CEntityRender* m_render;
+		//CItemProxy* m_pItem;
+		//unsigned int m_ownerId;
+		//Vec3_tpl<float> m_fireTarget; // 20
+		//class CEntityRender* m_render;
+
+		ACEID_API CREATE_FUNCTOR(Vec3_tpl<float>, m_fireTarget, 0x20);
 	};
 
 	struct CMountableItemBox 

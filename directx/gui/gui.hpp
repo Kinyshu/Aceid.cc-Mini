@@ -313,7 +313,6 @@ namespace gui {
 			ImGui::SetCursorPos({ 15.f, 60.f });
 			ImGui::BeginChild(xorstr("##ScriptsChild"), { 670.f, 310.f });
 			{
-				ImGui::Text(xorstr(u8"Информацию про LUA скриптинг вы можете найти на https://aceid.cc/lua"));
 				ImGui::InputTextMultiline(xorstr("##Script"), (char*)&luaBuffer, 8196, { 660.f, 240.f }, ImGuiInputTextFlags_::ImGuiInputTextFlags_AllowTabInput);
 
 				if (ImGui::Button(xorstr(u8"Выполнить скрипт"), { 200.f, 30.f })) {
@@ -327,7 +326,7 @@ namespace gui {
 		}
 		ImGui::End();
 
-		ImGui::GetBackgroundDrawList()->AddText({ 10.f, 15.f }, ImColor(255, 255, 255), std::string("ID: " + web::user_id + "\nNAME: " + web::username + "\nVERSION: 1.6\n").c_str());
+		//ImGui::GetBackgroundDrawList()->AddText({ 10.f, 15.f }, ImColor(255, 255, 255), std::string("ID: " + web::user_id + "\nNAME: " + web::username + "\nVERSION: 1.6\n").c_str());
 	}
 }
 

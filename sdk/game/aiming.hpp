@@ -115,10 +115,6 @@ public:
 								continue;
 							}
 
-							if (strstr(reinterpret_cast<IActor*>(pActor)->m_pEntity->GetName(), xorstr("Turret"))) {
-								continue;
-							}
-
 							static std::string target[3] =
 							{ "Bip01 Head", "Bip01 Neck", "Bip01 Spine" };
 

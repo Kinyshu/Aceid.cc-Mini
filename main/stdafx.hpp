@@ -46,7 +46,7 @@
 #include <thread>
 #include <chrono>
 #include <mutex>
-#include "../web/web.hpp"
+//#include "../web/web.hpp"
 
 #define xorstr(s) s // SUPER IMPLEMENTATION OF XORSTR
 
@@ -55,14 +55,14 @@
 #include "../ctx/ctx.hpp"
 #include "../ctx/data.hpp" // offsets here
 
-#include "../includes/hooklib/HookLib.h"
+//#include "../includes/hooklib/HookLib.h"
 #include "../sdk/sdk.hpp"
 
 #include "../directx/hook/handler.hpp"
 #include "../directx/hook/hook.hpp"
 
-#pragma comment(lib, "zydis.lib")
-#pragma comment(lib, "hooklib.lib")
+//#pragma comment(lib, "zydis.lib")
+//#pragma comment(lib, "hooklib.lib")
 #pragma comment(lib, "d3d11.lib")
 
 #endif // !STDAFX_HPP
