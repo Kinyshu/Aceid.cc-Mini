@@ -26,11 +26,9 @@ Aceid.cc Mini - Бесплатный чит для игры "Warface", в нём
 ### Lua скриптинг
 ```lua
 ACEID_API = {}
-FUNCTIONS_TABLE = {}
 
 function ACEID_API:new()
     local Methods = {}
-    local Markers = {}
 
     Methods.ENABLED = 1;
     Methods.DISABLED = 0;
@@ -132,37 +130,6 @@ function ACEID_API:new()
     function Methods:ShowConsole(Show)
         System.ShowConsole(Show);
     end
-	
-    -- Ищет функцию в таблице
-	function Methods:FindFunction(Name, Handler)
-		for key, Function in pairs(FUNCTIONS_TABLE) do
-			if (Function.Name == Name 
-            or Function.Function == Handler) then
-				return key;
-			end
-		end
-		return nil;
-	end
-
-    -- Регистрирует функцию в таблице
-	function Methods:RegisterFunction(Name, Function)  
-		local key = self:FindFunction(Name, Function);
-		if (key == nil) then
-			table.insert(FUNCTIONS_TABLE, { Name=Name, Function=Function });
-            return;
-		end
-        if (FeedbackSystem ~= nil) then
-            FeedbackSystem.OnEvent("objective_active_radar", {string={message=string.format("[!] Функция '%s', уже зарегистрирована.", Name)}});
-        end
-	end
-
-    -- Удаляет функцию из таблицы
-	function Methods:UnregisterFunction(Name)
-		local key = self:FindFunction(Name);
-		if (key ~= nil) then
-			table.remove(FUNCTIONS_TABLE, key);
-		end
-	end
 
     setmetatable(Methods, self)
     self.__index = self;
